@@ -1,3 +1,4 @@
+import builder.DrugModel;
 import staticFactoryMethod.Provider;
 import staticFactoryMethod.Service;
 import staticFactoryMethod.Services;
@@ -7,15 +8,15 @@ import staticFactoryMethod.Services;
  */
 public class Main {
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
 
-       Services.registerProvider("Tmobile", new Provider() {
-           @Override
-           public Service newService() {
-               return new Service();
-           }
-       });
 
-        Services.newInstance("Tmobile");
+        DrugModel model = new DrugModel.Builder("Lipitor", 20.0)
+                .setProvider("Dr Kyaw")
+                .setDirection("once day")
+                .setQuantity(30.0).build();
+
+        System.out.println(model.getName());
     }
 }
+
